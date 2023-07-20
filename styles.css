@@ -27,3 +27,12 @@ h2 {
   margin:0; 
   position:relative;
 }
+@media only screen and (max-width: 900px)  {
+  iframe {
+    width:70%;
+    height:70%;
+    margin-left: 10%;
+  }
+}
+
+

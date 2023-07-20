@@ -10,12 +10,12 @@
 // + Use arrays, loops and/or conditional logic in JavaScript
 
 function userInputName() {
-  const greeting = "Welcome";
   const year = document.createElement("h3");
   year.innerHTML = "2023";
   document.getElementById("header").appendChild(year);
+  const greeting = "Hi";
   const userInput = prompt("What is your name?");
-  document.getElementById("userInput").innerHTML = `${greeting} ${userInput} 👋!`;
+  document.getElementById("userInput").innerHTML = `${greeting} ${userInput}! 👋`;
   let nameStyle = document.getElementById("userInput");
   nameStyle.style.color = "red";
   nameStyle.style.fontSize = "30px";
@@ -34,18 +34,16 @@ function createQuiz1() {
   button1.style.backgroundColor = "lightblue";
   button1.style.border = "2px solid black";
   button1.style.borderRadius = "5px";
-  button1.onmouseover = function () {
-    mouseOver();
-  };
-  button1.onmouseout = function () {
-    mouseOut();
-  };
-  function mouseOver() {
+  button1.addEventListener('mouseover',function () {
     button1.style.color = "red";
-  }
-  function mouseOut() {
-    button1.style.color = "black";
-  }
+    button1.style.fontWeight = "bold";
+    button1.style.transition = ".5s";
+  });
+  button1.addEventListener('mouseout',function () {
+    button1.style.color = "";
+    button1.style.fontWeight = "";
+    button1.style.transition = "";
+  });
   button1.style.cursor = "pointer";
   button1.addEventListener("click", function () {
     alert("Questions on the 2022-23 season of Premier League ⚽")
@@ -71,9 +69,10 @@ function createQuiz1() {
 
     let result = null
 
+
     for (let i = 0; i < questionsForSport.length; i++) {
       let answer = prompt(questionsForSport[i][0]);
-      if (answer.toLowerCase() == questionsForSport[i][1]) {
+      if (answer.toLowerCase() === questionsForSport[i][1]) {
         alert("Correct! " + questionsForSport[i][2]);
         result += 5;
       } else {
@@ -81,45 +80,83 @@ function createQuiz1() {
         result += 0;
       }
     }
+ 
     switch (true) {
       case (result >= 20):
         // alert('Congratulations! You won the game! 🥳');
         const wonTheGameFootball = document.getElementById("result");
         wonTheGameFootball.textContent = "Congratulations! You won the game! 🥳";
-        wonTheGameFootball.style.fontSize = "70px";
+        wonTheGameFootball.style.fontSize = "50px";
         wonTheGameFootball.style.color = "red";
         wonTheGameFootball.style.fontWeight = "400";
         wonTheGameFootball.style.fontFamily = "'Barlow', sans-serif";
         wonTheGameFootball.style.textAlign = "center";
+        document.getElementById("gifFrame").innerHTML =
+        '<iframe width="1263" height="480" src="https://giphy.com/embed/l0MYQjj8XLysFuwdW" frameborder="0" alt="Steven Gerrard CL Trophy GIF"></iframe>';
+        const wonTheGameFootballGIFLink = document.getElementById("gifLink");
+        wonTheGameFootballGIFLink.setAttribute("href", "https://giphy.com/gifs/trophy-arrans-gerrard-l0MYQjj8XLysFuwdW");
+        wonTheGameFootballGIFLink.textContent = "via GIPHY";
+        wonTheGameFootballGIFLink.style.fontFamily = "'Barlow', sans-serif";
+        wonTheGameFootballGIFLink.style.color = "red";
+        wonTheGameFootballGIFLink.style.float = "right";
+        wonTheGameFootballGIFLink.style.margin = "30px 25px";
         break;
       case (result > 10 && result < 20):
         // alert('Keep going! You got 15 points! 👏');
         const keepGoingFootball = document.getElementById("result");
-        keepGoingFootball.textContent = 'Keep going! You got 15 points! 👏';
-        keepGoingFootball.style.fontSize = "70px";
+        keepGoingFootball.textContent = 'Keep going! 👏';
+        keepGoingFootball.style.fontSize = "50px";
         keepGoingFootball.style.color = "red";
         keepGoingFootball.style.fontWeight = "400";
         keepGoingFootball.style.fontFamily = "'Barlow', sans-serif";
         keepGoingFootball.style.textAlign = "center";
+        document.getElementById("gifFrame").innerHTML =
+        '<iframe width="1263" height="480" src="https://giphy.com/embed/wh6JkfvD2vpcI" frameborder="0" alt="Steven Gerrard kissing CL trophy GIF"></iframe>';
+        const keepGoingFootballGIFLink = document.getElementById("gifLink");
+        keepGoingFootballGIFLink.setAttribute("href", "https://giphy.com/gifs/wh6JkfvD2vpcI");
+        keepGoingFootballGIFLink.textContent = "via GIPHY";
+        keepGoingFootballGIFLink.style.fontFamily = "'Barlow', sans-serif";
+        keepGoingFootballGIFLink.style.color = "red";
+        keepGoingFootballGIFLink.style.float = "right";
+        keepGoingFootballGIFLink.style.margin = "30px 25px";
         break;
       case (result >= 6 && result <= 10):
         // alert('Halfway there!')
         const halfwayThereFootball = document.getElementById("result");
         halfwayThereFootball.textContent = "Halfway there!";
-        halfwayThereFootball.style.fontSize = "70px";
+        halfwayThereFootball.style.fontSize = "50px";
         halfwayThereFootball.style.color = "red";
         halfwayThereFootball.style.fontWeight = "400";
         halfwayThereFootball.style.fontFamily = "'Barlow', sans-serif";
         halfwayThereFootball.style.textAlign = "center";
-      case (result = 5):
+        document.getElementById("gifFrame").innerHTML =
+        '<iframe width="1263" height="480" src="https://giphy.com/embed/SiIlv6wwg2fxQIgEXB" frameborder="0" alt="Liverpool vs Everton GIF"></iframe>';
+        const halfwayThereFootballGIFLink = document.getElementById("gifLink");
+        halfwayThereFootballGIFLink.setAttribute("href", "https://giphy.com/gifs/lfc-SiIlv6wwg2fxQIgEXB");
+        halfwayThereFootballGIFLink.textContent = "via GIPHY";
+        halfwayThereFootballGIFLink.style.fontFamily = "'Barlow', sans-serif";
+        halfwayThereFootballGIFLink.style.color = "red";
+        halfwayThereFootballGIFLink.style.float = "right";
+        halfwayThereFootballGIFLink.style.margin = "30px 25px";
+        break;
+      case (result <= 5):
         // alert("You need to watch football! ⚽");
         const watchFootball = document.getElementById("result");
-        watchFootball.textContent = "You need to watch football ⚽!";
-        watchFootball.style.fontSize = "70px";
+        watchFootball.textContent = "You need to watch football! ⚽";
+        watchFootball.style.fontSize = "50px";
         watchFootball.style.color = "red";
         watchFootball.style.fontWeight = "400";
         watchFootball.style.fontFamily = "'Barlow', sans-serif";
         watchFootball.style.textAlign = "center";
+        document.getElementById("gifFrame").innerHTML =
+        '<iframe width="1263" height="480" src="https://giphy.com/embed/oy3KWBNjxG6YST6pak" frameborder="0" alt="Liverpool Ox GIF"></iframe>';
+        const watchFootballGIFLink = document.getElementById("gifLink");
+        watchFootballGIFLink.setAttribute("href", "https://giphy.com/gifs/lfc-no-wrong-incorrect-oy3KWBNjxG6YST6pak");
+        watchFootballGIFLink.textContent = "via GIPHY";
+        watchFootballGIFLink.style.fontFamily = "'Barlow', sans-serif";
+        watchFootballGIFLink.style.color = "red";
+        watchFootballGIFLink.style.float = "right";
+        watchFootballGIFLink.style.margin = "30px 25px";
         break;
       default:
         alert('Error.');
@@ -138,18 +175,16 @@ function createQuiz2() {
   button2.style.backgroundColor = "lightblue";
   button2.style.border = "2px solid black";
   button2.style.borderRadius = "5px";
-  button2.onmouseover = function () {
-    mouseOver();
-  };
-  button2.onmouseout = function () {
-    mouseOut();
-  };
-  function mouseOver() {
-    button2.style.color = "red";
-  }
-  function mouseOut() {
-    button2.style.color = "black";
-  }
+  button2.addEventListener('mouseover',function () {
+  button2.style.color = "red";
+  button2.style.fontWeight = "bold";
+  button2.style.transition = ".5s";
+  });
+  button2.addEventListener('mouseout',function () {
+  button2.style.color = "";
+  button2.style.fontWeight = "";
+  button2.style.transition = "";
+  });
   button2.style.cursor = "pointer";
   button2.addEventListener("click", function () {
     alert("Questions on 2000s TV Shows 📺")
@@ -195,7 +230,7 @@ function createQuiz2() {
 
     for (let i = 0; i < questionsForTVShows.length; i++) {
       let answer = prompt(questionsForTVShows[i][0]);
-      if (answer.toLowerCase() == questionsForTVShows[i][1]) {
+      if (answer.toLowerCase() === questionsForTVShows[i][1]) {
         alert("Correct! It's " + questionsForTVShows[i][2]);
         resultForTVShows += 5;
       } else {
@@ -208,24 +243,33 @@ function createQuiz2() {
       // alert('Congratulations! You won the game! 🥳');
       const wonTheGame = document.getElementById("result");
       wonTheGame.textContent = "Congratulations! You won the game! 🥳";
-      wonTheGame.style.fontSize = "70px";
+      wonTheGame.style.fontSize = "50px";
       wonTheGame.style.color = "red";
       wonTheGame.style.fontWeight = "400";
       wonTheGame.style.fontFamily = "'Barlow', sans-serif";
       wonTheGame.style.textAlign = "center";
+      document.getElementById("gifFrame").innerHTML =
+  '<iframe width="1263" height="480" src="https://giphy.com/embed/l41lZxzroU33typuU" frameborder="0" alt="Full House GIF"></iframe>';
+      const wonTheGameGIFLink = document.getElementById("gifLink");
+      wonTheGameGIFLink.setAttribute("href", "https://giphy.com/gifs/full-house-michelle-tanner-you-got-it-dude-l41lZxzroU33typuU");
+      wonTheGameGIFLink.textContent = "via GIPHY";
+      wonTheGameGIFLink.style.fontFamily = "'Barlow', sans-serif";
+      wonTheGameGIFLink.style.color = "red";
+      wonTheGameGIFLink.style.float = "right";
+      wonTheGameGIFLink.style.margin = "30px 25px";
     } else if (resultForTVShows > 25 && resultForTVShows <= 44) {
       // alert('Keep going! 👏')
       const keepGoing = document.getElementById("result");
       keepGoing.textContent = "Keep going! 👏";
-      keepGoing.style.fontSize = "70px";
+      keepGoing.style.fontSize = "50px";
       keepGoing.style.color = "red";
       keepGoing.style.fontWeight = "400";
       keepGoing.style.fontFamily = "'Barlow', sans-serif";
       keepGoing.style.textAlign = "center";
-      document.getElementById("gifFrame").innerHTML +=
-  '<iframe width="1263" height="480" src="https://giphy.com/embed/xUySTxs9O1VAgBLRbG" frameborder="0" alt="Gilmore Girls Gif"></iframe>';
+      document.getElementById("gifFrame").innerHTML =
+  '<iframe width="1263" height="480" src="https://giphy.com/embed/GIu0O6ZMrcUrLJgX8W" frameborder="0" alt="The O.C. GIF"></iframe>';
       const keepGoingGIFLink = document.getElementById("gifLink");
-      keepGoingGIFLink.setAttribute("href", "https://giphy.com/gifs/gilmoregirls-netflix-gilmore-girls-xUySTxs9O1VAgBLRbG");
+      keepGoingGIFLink.setAttribute("href", "https://giphy.com/gifs/globoplay-seth-cohen-no-acreditar-GIu0O6ZMrcUrLJgX8W");
       keepGoingGIFLink.textContent = "via GIPHY";
       keepGoingGIFLink.style.fontFamily = "'Barlow', sans-serif";
       keepGoingGIFLink.style.color = "red";
@@ -235,20 +279,38 @@ function createQuiz2() {
       // alert('Halfway there!')
       const halfwayThere = document.getElementById("result");
       halfwayThere.textContent = "Halfway there!";
-      halfwayThere.style.fontSize = "70px";
+      halfwayThere.style.fontSize = "50px";
       halfwayThere.style.color = "red";
       halfwayThere.style.fontWeight = "400";
       halfwayThere.style.fontFamily = "'Barlow', sans-serif";
       halfwayThere.style.textAlign = "center";
+      document.getElementById("gifFrame").innerHTML =
+  '<iframe width="1263" height="480" src="https://giphy.com/embed/xUySTxs9O1VAgBLRbG" frameborder="0" alt="Gilmore Girls GIF"></iframe>';
+      const halfwayThereGIFLink = document.getElementById("gifLink");
+      halfwayThereGIFLink.setAttribute("href", "https://giphy.com/gifs/gilmoregirls-netflix-gilmore-girls-xUySTxs9O1VAgBLRbG");
+      halfwayThereGIFLink.textContent = "via GIPHY";
+      halfwayThereGIFLink.style.fontFamily = "'Barlow', sans-serif";
+      halfwayThereGIFLink.style.color = "red";
+      halfwayThereGIFLink.style.float = "right";
+      halfwayThereGIFLink.style.margin = "30px 25px";
     } else if (resultForTVShows <= 15) {
       // alert("You need to watch some TV shows! 📺");
       const watchSomeTVShows = document.getElementById("result");
-      watchSomeTVShows.textContent = "You need to watch some TV shows 📺!";
-      watchSomeTVShows.style.fontSize = "70px";
+      watchSomeTVShows.textContent = "You need to watch some TV shows! 📺";
+      watchSomeTVShows.style.fontSize = "50px";
       watchSomeTVShows.style.color = "red";
       watchSomeTVShows.style.fontWeight = "400";
       watchSomeTVShows.style.fontFamily = "'Barlow', sans-serif";
       watchSomeTVShows.style.textAlign = "center";
+      document.getElementById("gifFrame").innerHTML =
+  '<iframe width="1263" height="480" src="https://giphy.com/embed/l0HTYXxvTVGJsWC8E" frameborder="0" alt="Dawson Creek GIF"></iframe>';
+      const watchSomeTVShowsGIFLink = document.getElementById("gifLink");
+      watchSomeTVShowsGIFLink.setAttribute("href", "https://giphy.com/gifs/l0HTYXxvTVGJsWC8E");
+      watchSomeTVShowsGIFLink.textContent = "via GIPHY";
+      watchSomeTVShowsGIFLink.style.fontFamily = "'Barlow', sans-serif";
+      watchSomeTVShowsGIFLink.style.color = "red";
+      watchSomeTVShowsGIFLink.style.float = "right";
+      watchSomeTVShowsGIFLink.style.margin = "30px 25px";
     } else {
       alert("Error")
     }
